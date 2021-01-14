@@ -40,7 +40,7 @@ const NameStyled = styled.h1`
 const AuthorStyled = styled.div`
   background: #000;
   color: #fff;
-  textdecoration: none;
+  text-decoration: none;
   padding: 7px;
   margin-left: -20px;
 `;
@@ -48,13 +48,19 @@ const AuthorStyled = styled.div`
 const AuthorWrapperStyled = styled.div`
   display: flex;
   align-items: center;
+
+  && {
+    img {
+      width: 80px;
+    }
+  }
 `;
 
 const Repository: React.FC<RepositorySchema> = ({ name, author, stars, avatar, url, description }) => (
   <RepositoryStyled>
     <AuthorWrapperStyled>
       <a href={url} target={'_blank'} rel='noreferrer'>
-        <img width={80} src={avatar} alt='' />
+        <img src={avatar} alt='avatar' />
       </a>
       <a href={url} target={'_blank'} rel='noreferrer'>
         <AuthorStyled>{author}</AuthorStyled>

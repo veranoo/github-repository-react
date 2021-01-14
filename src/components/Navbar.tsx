@@ -10,12 +10,17 @@ const NavStyled = styled.nav`
   position: sticky;
   height: 50px;
   top: 0;
+
+  && {
+    img {
+      width: 80px;
+    }
+  }
 `;
 
 const Navbar = () => (
   <NavStyled>
     <img
-      width='80px'
       src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Octicons-logo-github.svg/1598px-Octicons-logo-github.svg.png'
       alt='Logo'
     />
