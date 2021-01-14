@@ -18,7 +18,7 @@ const NavStyled = styled.nav`
   }
 `;
 
-const Navbar = () => (
+const Navbar: React.FC = () => (
   <NavStyled>
     <img
       src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Octicons-logo-github.svg/1598px-Octicons-logo-github.svg.png'
