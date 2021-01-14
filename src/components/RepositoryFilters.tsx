@@ -1,5 +1,5 @@
-import { observer } from 'mobx-react';
 import React, { ChangeEvent, useContext } from 'react';
+import { observer } from 'mobx-react';
 import styled from 'styled-components';
 
 import { RootStoreContext } from '../store/RootStoreProvider';
@@ -21,17 +21,7 @@ const RadioWrapper = styled.div`
   display: flex;
 `;
 
-const times = [
-  {
-    value: Since.DAILY
-  },
-  {
-    value: Since.MONTHLY
-  },
-  {
-    value: Since.WEEKLY
-  }
-];
+const periods = [Since.DAILY, Since.MONTHLY, Since.WEEKLY];
 
 export const RepositoryFilters = observer(() => {
   const { repositoryStore } = useContext(RootStoreContext);
@@ -39,33 +29,32 @@ export const RepositoryFilters = observer(() => {
     repositoryStore.setSince(evt.target.value as Since);
   };
 
+  const handleChangeLanguage = (evt: ChangeEvent<HTMLSelectElement>) => {
+    repositoryStore.setLanguage(evt.target.value);
+  };
+
   return (
     <Wrapper>
       <SinceWrapper>
         Since:
         <RadioWrapper>
-          {times.map(({ value }) => (
-            <div>
+          {periods.map((period) => (
+            <>
               <input
                 type='radio'
-                id={value}
-                value={value}
-                checked={repositoryStore.since === value}
+                id={period}
+                value={period}
+                checked={repositoryStore.since === period}
                 onChange={handleChangeRadio}
               />
-              <label htmlFor={value}>{value}</label>
-            </div>
+              <label htmlFor={period}>{period}</label>
+            </>
           ))}
         </RadioWrapper>
       </SinceWrapper>
       <div>
         Choose language:
-        <select
-          value={repositoryStore.lang ?? ''}
-          onChange={(evt) => {
-            repositoryStore.setLang(evt.target.value);
-          }}
-        >
+        <select value={repositoryStore.language ?? ''} onChange={handleChangeLanguage}>
           <option value={''}>-</option>
           {repositoryStore.languages.map(({ name, urlParam }) => (
             <option key={urlParam} value={name}>

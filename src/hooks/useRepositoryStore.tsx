@@ -8,7 +8,7 @@ const useRepositoryStore = () => {
   const store = useLocalObservable<RepositoryStoreSchema>(() => ({
     repositories: [],
     sort: (localStorage.getItem('app:sort') as SortType) ?? SortType.ASC,
-    lang: localStorage.getItem('app:lang'),
+    language: localStorage.getItem('app:language'),
     since: (localStorage.getItem('app:since') as Since) ?? Since.DAILY,
     languages: [],
     error: false,
@@ -21,8 +21,8 @@ const useRepositoryStore = () => {
     setSort(sortType: SortType) {
       store.sort = sortType;
     },
-    setLang(lang: string) {
-      store.lang = lang;
+    setLanguage(lang: string) {
+      store.language = lang;
     },
     setSince(since: Since) {
       store.since = since;
@@ -40,7 +40,10 @@ const useRepositoryStore = () => {
         store.loading = true;
       });
       try {
-        const repositories = await repositoryService.fetchRepositories({ since: store.since, language: store.lang });
+        const repositories = await repositoryService.fetchRepositories({
+          since: store.since,
+          language: store.language
+        });
         runInAction(() => {
           store.repositories = repositories;
           store.loading = false;
@@ -55,8 +58,8 @@ const useRepositoryStore = () => {
     }
   }));
 
-  observe(store, 'lang', ({ newValue }) => {
-    localStorage.setItem('app:lang', newValue as string);
+  observe(store, 'language', ({ newValue }) => {
+    localStorage.setItem('app:language', newValue as string);
     store.fetchRepositories();
   });
 

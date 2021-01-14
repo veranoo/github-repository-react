@@ -37,14 +37,14 @@ export type Language = {
 export type RepositoryStoreSchema = {
   repositoriesSortedByStars: RepositorySchema[];
   repositories: RepositorySchema[];
-  lang: string | null;
+  language: string | null;
   sort: SortType;
   since: Since;
   languages: Language[];
   error: boolean;
   loading: boolean;
   setSince(since: Since): void;
-  setLang(lang: string): void;
+  setLanguage(lang: string): void;
   setSort(sort: string): void;
   fetchRepositories(): Promise<void>;
   fetchLanguages(): Promise<void>;

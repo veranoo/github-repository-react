@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { ChangeEvent, useEffect } from 'react';
 import { observer } from 'mobx-react';
+import styled from 'styled-components';
 
 import { useRootStore } from '../store/RootStoreProvider';
-import styled from 'styled-components';
 import { Repository } from '.';
 import { SortType } from '../types/repositoryTypes';
 
@@ -35,16 +35,15 @@ export const RepositoryList = observer(() => {
     await repositoryStore.fetchRepositories();
   };
 
+  const handleSortChange = (evt: ChangeEvent<HTMLSelectElement>) => {
+    repositoryStore.setSort(evt.target.value as SortType);
+  };
+
   return (
     <Container>
       <SortWrapper>
         Sort by stars:
-        <select
-          value={repositoryStore.sort}
-          onChange={(evt) => {
-            repositoryStore.setSort(evt.target.value as SortType);
-          }}
-        >
+        <select value={repositoryStore.sort} onChange={handleSortChange}>
           <option value={SortType.ASC}>ASC</option>
           <option value={SortType.DESC}>DESC</option>
         </select>
