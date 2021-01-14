@@ -1,5 +1,5 @@
-import { useLocalObservable } from 'mobx-react';
 import { observe, runInAction } from 'mobx';
+import { useLocalObservable } from 'mobx-react';
 
 import repositoryService from '../api/repositoryService';
 import { RepositorySchema, RepositoryStoreSchema, Since, SortType } from '../types/repositoryTypes';

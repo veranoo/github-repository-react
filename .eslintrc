@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
+  "rules": {
+    "import/order": [
+      "warn"
+    ]
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "files": [
+      "*ts",
+      "*.tsx"
+    ]
+  }
+}

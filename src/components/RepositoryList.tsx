@@ -1,10 +1,12 @@
 import React, { ChangeEvent, useEffect } from 'react';
+
 import { observer } from 'mobx-react';
 import styled from 'styled-components';
 
 import { useRootStore } from '../store/RootStoreProvider';
-import { Repository } from '.';
 import { SortType } from '../types/repositoryTypes';
+
+import { Repository } from '.';
 
 const Wrapper = styled.div`
   display: flex;

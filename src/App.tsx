@@ -1,9 +1,10 @@
 import React from 'react';
-import RootStoreProvider from './store/RootStoreProvider';
-import { Reset } from 'styled-reset';
-import { createGlobalStyle } from 'styled-components';
 
-import { RepositoryFilters, RepositoryList, Navbar } from './components';
+import { createGlobalStyle } from 'styled-components';
+import { Reset } from 'styled-reset';
+
+import { Navbar, RepositoryFilters, RepositoryList } from './components';
+import RootStoreProvider from './store/RootStoreProvider';
 
 const GlobalStyle = createGlobalStyle`
   body {

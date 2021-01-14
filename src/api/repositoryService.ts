@@ -1,4 +1,5 @@
 import qs from 'qs';
+
 import { Language, RepositorySchema } from '../types/repositoryTypes';
 
 const repositoryService = {
